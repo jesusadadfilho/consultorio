@@ -49,7 +49,8 @@ class Consulta(models.Model):
 
     dt_consulta = models.DateTimeField()
     diagnostico = models.CharField(max_length=100)
-    agendamento = models.OneToOneField(Agendamento, on_delete=models.CASCADE,
+    agendamento = models.OneToOneField(Agendamento, null=True,
+                                       on_delete=models.SET_NULL,
                                        related_name="Consulta")
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE,
                                 related_name="consultas")
