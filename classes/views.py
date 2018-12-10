@@ -13,7 +13,9 @@ def mostrar_agendamentos(request):
 
 
 def mostrar_especialidades(request):
-    return render(request, 'especialidades.html')
+    especialidades = Especialidade.objects.all()
+    return render(request, 'especialidades.html',
+                  {'especialidades': especialidades})
 
 
 def mostrar_consultas(request):
