@@ -59,7 +59,7 @@ def novo_medico(request):
             form.save()
         return redirect('mostrar_medicos')
     else:
-        form = PacienteForm()
+        form = MedicoForm()
         return render(request, 'novo_medico.html',
                       {'form': form})
 

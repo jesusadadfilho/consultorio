@@ -1,4 +1,4 @@
-from django.forms import ModelForm, TextInput
+from django.forms import ModelForm, TextInput, DateInput
 from .models import Especialidade, Medico, Cliente
 
 
@@ -26,15 +26,9 @@ class MedicoForm(ModelForm):
         fields = '__all__'
 
         widgets = {
-            'nome': TextInput(attrs={'class': 'form-control', 'placeholder': "Nome do Paciente"}),
-            'CPF': TextInput(attrs={'class': 'form-control', 'placeholder': "Digite o CPF do paciente"}),
-            'dt_nascimento': TextInput(attrs={'type': "date"}),
-        }
-
-        error_messages = {
-            'nome': {
-                'max_length': ("This writer's name is too long."),
-            },
+            'nome': TextInput(attrs={'class': 'form-control', 'placeholder': "Nome do Médico"}),
+            'CPF': TextInput(attrs={'class': 'form-control', 'placeholder': "Digite o CPF do Médico"}),
+            'dt_nascimento': DateInput(attrs={'type': "date"}),
         }
 
 
@@ -47,4 +41,5 @@ class PacienteForm(ModelForm):
         widgets = {
             'nome': TextInput(attrs={'class': 'form-control', 'placeholder': "Nome do Paciente"}),
             'CPF': TextInput(attrs={'class': 'form-control', 'placeholder': "Digite o CPF do paciente"}),
+            'dt_nascimento': DateInput(attrs={'type': "date"}),
         }

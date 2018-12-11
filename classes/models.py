@@ -5,6 +5,9 @@ class Especialidade(models.Model):
      nome = models.CharField(max_length=30)
      descricao = models.CharField(max_length=100)
 
+     def __str__(self):
+         return self.nome
+
 
 class Medico(models.Model):
     nome = models.CharField(max_length=30)
