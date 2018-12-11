@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 from .forms import *
 
@@ -29,6 +29,20 @@ def nova_especialidade(request):
         form = EspecialidadeForm()
         return render(request, 'nova_especialidade.html',
                       {'form': form})
+
+
+def editar_especialidade(request, id):
+    especialidade = get_object_or_404(Especialidade, id=id)
+
+    if request.method == "POST":
+        form = EspecialidadeForm(request.POST, instance=Especialidade)
+        if form.is_valid():
+            form.save()
+        return redirect('mostrar_especialidades')
+    else:
+        form = EspecialidadeForm(instance=especialidade)
+        return render(request, 'nova_especialidade.html',
+                  {'form': form})
 
 
 def remover_especialidade(request, id):
