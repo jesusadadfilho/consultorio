@@ -18,10 +18,8 @@
             <tr>
               <th class="text-center"><em class="glyphicon glyphicon-cog"></em></th>
               <th class="hidden-xs">ID</th>
-              <th>Agendamento</th>
               <th>Data agendada</th>
               <th>Cliente</th>
-              <th>Cliente CPF</th>
               <th>Atendente</th>
               <th>especialidade</th>
             </tr>
@@ -36,11 +34,9 @@
                 </a>
               </td>
               <td class="hidden-xs">{{ agendamento.id }}</td>
-              <td>{{ agendamento.dt_agendamento.date }}</td>
               <td>{{ agendamento.dt_agendada.date }}</td>
-              <td>{{ agendamento.cliente.nome }}</td>
-              <td>{{ agendamento.cliente.CPF }}</td>
-              <td>{{ agendamento.atendente.nome }}</td>
+              <td>{{ agendamento.cliente }}</td>
+              <td>{{ agendamento.atendente }}</td>
               <td>{{ agendamento.especialidade }}</td>
             </tr>
             {% endfor %}

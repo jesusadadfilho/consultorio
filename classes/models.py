@@ -16,12 +16,18 @@ class Medico(models.Model):
     especialidade = models.ForeignKey(Especialidade, on_delete=models.CASCADE,
                                       related_name="medicos")
 
+    def __str__(self):
+        return self.nome
+
 
 class Atendente(models.Model):
 
     nome = models.CharField(max_length=30)
     CPF =  models.CharField(max_length=14)
     dt_nascimento = models.DateField()
+
+    def __str__(self):
+        return self.nome
 
 
 class Cliente(models.Model):
@@ -34,6 +40,9 @@ class Cliente(models.Model):
         ('F', 'feminino')
     )
     sexo = models.CharField(max_length=1, choices=SEXO)
+
+    def __str__(self):
+        return self.nome
 
 
 class Agendamento(models.Model):
