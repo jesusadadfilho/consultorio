@@ -63,7 +63,7 @@ class AgendamentoForm(ModelForm):
 
     class Meta:
         model = Agendamento
-        fields = '__all__'
+        exclude = ['dt_agendamento']
 
         widgets = {
             'dt_agendada': DateInput(attrs={'type': "date"}),

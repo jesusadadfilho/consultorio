@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from datetime import datetime
 from .models import *
 from .forms import *
 
@@ -17,7 +18,9 @@ def novo_agendamento(request):
     if request.method == "POST":
         form = AgendamentoForm(request.POST)
         if form.is_valid():
-            form.save()
+            agend = form.save(commit=False)
+            agend.dt_agendamento = datetime.now()
+            agend.save()
         return redirect('mostrar_agendamentos')
     else:
         form = AgendamentoForm()
