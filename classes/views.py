@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import *
+from .forms import *
 
 
 def index(request):
@@ -16,6 +17,12 @@ def mostrar_especialidades(request):
     especialidades = Especialidade.objects.all()
     return render(request, 'especialidades.html',
                   {'especialidades': especialidades})
+
+
+def nova_especialidade(request):
+    form = EspecialidadeForm()
+    return render(request, 'nova_especialidade.html',
+                  {'form': form})
 
 
 def mostrar_consultas(request):
