@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from .models import *
 from .forms import *
 
 
@@ -27,6 +28,28 @@ def novo_agendamento(request):
 def remover_agendamento(request, id):
     Agendamento.objects.get(id=id).delete()
     return redirect('mostrar_agendamentos')
+
+
+def mostrar_consultas(request):
+    consultas = Consulta.objects.all()
+    return render(request, 'consultas.html',
+                  {'consultas': consultas})
+
+
+def nova_consulta(request):
+    if request.method == "POST":
+        form = ConsultaForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('mostrar_consultas')
+    else:
+        form = ConsultaForm()
+        return render(request, 'nova_consulta.html',
+                      {'form': form})
+
+
+def remover_consulta(request, id):
+    pass
 
 
 def mostrar_especialidades(request):
@@ -68,10 +91,6 @@ def editar_especialidade(request, id):
 def remover_especialidade(request, id):
     Especialidade.objects.get(id=id).delete()
     return redirect('mostrar_especialidades')
-
-
-def mostrar_consultas(request):
-    pass
 
 
 def mostrar_pacientes(request):

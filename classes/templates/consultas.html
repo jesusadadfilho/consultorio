@@ -8,7 +8,7 @@
       <div class="panel-heading">
         <div class="row">
           <div class="col col-xs-6">
-            <h3>Agendamentos</h3>
+            <h3>Consultas</h3>
           </div>
         </div>
       </div>
@@ -18,26 +18,26 @@
             <tr>
               <th class="text-center"><em class="glyphicon glyphicon-cog"></em></th>
               <th class="hidden-xs">ID</th>
-              <th>Data agendada</th>
+              <th>Diagnostico</th>
+              <th>Agendado em</th>
               <th>Cliente</th>
-              <th>Atendente</th>
-              <th>especialidade</th>
+              <th>Médico</th>
             </tr>
           </thead>
           <tbody>
-            {% for agendamento in agendamentos %}
+            {% for consulta in consultas %}
             <tr>
               <td align="center">
                 <a class="btn btn-default"><em class="glyphicon glyphicon-pencil"></em></a>
-                <a  href="{% url 'remover_agendamento' agendamento.id %}"
+                <a  href="{% url 'remover_consulta' consulta.id %}"
                         class="btn btn-danger"><em class="glyphicon glyphicon-trash"></em>
                 </a>
               </td>
-              <td class="hidden-xs">{{ agendamento.id }}</td>
-              <td>{{ agendamento.dt_agendada.date }}</td>
-              <td>{{ agendamento.cliente }}</td>
-              <td>{{ agendamento.atendente }}</td>
-              <td>{{ agendamento.especialidade }}</td>
+              <td class="hidden-xs">{{ consulta.id }}</td>
+              <td>{{ consulta.diagnostico }}</td>
+              <td>{{ consulta.agendamento.dt_agendamento }}</td>
+              <td>{{ consulta.cliente }}</td>
+              <td>{{ consulta.medico }}</td>
             </tr>
             {% endfor %}
           </tbody>
@@ -50,7 +50,7 @@
             <h3 class="panel-title"></h3>
           </div>
           <div class="col col-xs-6 text-right">
-            <a href="{% url 'novo_agendamento' %}">
+            <a href="{% url 'nova_consulta' %}">
               <button type="button" class="btn btn-sm btn-primary btn-create">
                 <em class="glyphicon glyphicon-plus"></em>
               </button>
