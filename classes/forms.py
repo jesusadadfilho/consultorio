@@ -1,5 +1,5 @@
 from django.forms import ModelForm, TextInput, DateInput
-from .models import Especialidade, Medico, Cliente, Atendente
+from .models import Especialidade, Medico, Cliente, Atendente, Agendamento
 
 
 class EspecialidadeForm(ModelForm):
@@ -55,4 +55,15 @@ class AtendenteForm(ModelForm):
             'nome': TextInput(attrs={'class': 'form-control', 'placeholder': "Nome do Paciente"}),
             'CPF': TextInput(attrs={'class': 'form-control', 'placeholder': "Digite o CPF do paciente"}),
             'dt_nascimento': DateInput(attrs={'type': "date"}),
+        }
+
+class AgendamentoForm(ModelForm):
+
+    class Meta:
+        model = Agendamento
+        fields = '__all__'
+
+        widgets = {
+            'dt_agendada': DateInput(attrs={'type': "date"}),
+            'dt_agendamento': DateInput(attrs={'type': "date"}),
         }
