@@ -19,6 +19,7 @@ class EspecialidadeForm(ModelForm):
             },
         }
 
+
 class MedicoForm(ModelForm):
 
     class Meta:
@@ -46,4 +47,5 @@ class PacienteForm(ModelForm):
         widgets = {
             'nome': TextInput(attrs={'class': 'form-control', 'placeholder': "Nome do Paciente"}),
             'CPF': TextInput(attrs={'class': 'form-control', 'placeholder': "Digite o CPF do paciente"}),
+            'dt_nascimento' : TextInput(attrs={'type': "date"}),
         }
