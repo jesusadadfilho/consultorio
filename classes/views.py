@@ -52,6 +52,17 @@ def novo_paciente(request):
         return render(request, 'novo_paciente.html',
                       {'form': form})
 
+def novo_medico(request):
+    if request.method == "POST":
+        form = MedicoForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('mostrar_medicos')
+    else:
+        form = PacienteForm()
+        return render(request, 'novo_medico.html',
+                      {'form': form})
+
 
 def mostrar_medicos(request):
     medicos = Medico.objects.all()

@@ -19,7 +19,8 @@
               <th class="text-center"><em class="glyphicon glyphicon-cog"></em></th>
               <th class="hidden-xs">ID</th>
               <th>Nome</th>
-              <th>Descrição</th>
+              <th>Especialidade</th>
+              <th>Nascimento</th>
             </tr>
           </thead>
           <tbody>
@@ -32,6 +33,7 @@
               <td class="hidden-xs">{{ medico.id }}</td>
               <td>{{ medico.nome }}</td>
               <td>{{ medico.especialidade.nome }}</td>
+                <td>{{ medico.dt_nascimento }}</td>
             </tr>
             {% endfor %}
           </tbody>
@@ -44,7 +46,7 @@
             <h3 class="panel-title"></h3>
           </div>
           <div class="col col-xs-6 text-right">
-            <a href="{% url 'nova_especialidade' %}">
+            <a href="{% url 'novo_medico' %}">
               <button type="button" class="btn btn-sm btn-primary btn-create">
                 <em class="glyphicon glyphicon-plus"></em>
               </button>

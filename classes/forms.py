@@ -19,16 +19,16 @@ class EspecialidadeForm(ModelForm):
             },
         }
 
-
 class MedicoForm(ModelForm):
 
     class Meta:
         model = Medico
-        fields = ['nome', 'CPF']
+        fields = '__all__'
 
         widgets = {
-            'nome': TextInput(attrs={'class': 'form-control', 'placeholder': "Nome..."}),
-            'CPF': TextInput(attrs={'class': 'form-control', 'placeholder': "CPF..."}),
+            'nome': TextInput(attrs={'class': 'form-control', 'placeholder': "Nome do Paciente"}),
+            'CPF': TextInput(attrs={'class': 'form-control', 'placeholder': "Digite o CPF do paciente"}),
+            'dt_nascimento': TextInput(attrs={'type': "date"}),
         }
 
         error_messages = {
@@ -47,5 +47,4 @@ class PacienteForm(ModelForm):
         widgets = {
             'nome': TextInput(attrs={'class': 'form-control', 'placeholder': "Nome do Paciente"}),
             'CPF': TextInput(attrs={'class': 'form-control', 'placeholder': "Digite o CPF do paciente"}),
-            'dt_nascimento' : TextInput(attrs={'type': "date"}),
         }
