@@ -68,3 +68,20 @@ def mostrar_medicos(request):
     medicos = Medico.objects.all()
     return render(request, 'medicos.html',
                   {'medicos': medicos})
+
+
+def mostrar_atendentes(request):
+    atendentes = Atendente.objects.all()
+    return render(request, 'atendente.html',
+                  {'atendentes': atendentes})
+
+def novo_atendente(request):
+    if request.method == "POST":
+        form = AtendenteForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('mostrar_atendentes')
+    else:
+        form = PacienteForm()
+        return render(request, 'novo_atendente.html',
+                      {'form': form})

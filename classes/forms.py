@@ -43,3 +43,16 @@ class PacienteForm(ModelForm):
             'CPF': TextInput(attrs={'class': 'form-control', 'placeholder': "Digite o CPF do paciente"}),
             'dt_nascimento': DateInput(attrs={'type': "date"}),
         }
+
+
+class AtendenteForm(ModelForm):
+
+    class Meta:
+        model = Cliente
+        fields = '__all__'
+
+        widgets = {
+            'nome': TextInput(attrs={'class': 'form-control', 'placeholder': "Nome do Paciente"}),
+            'CPF': TextInput(attrs={'class': 'form-control', 'placeholder': "Digite o CPF do paciente"}),
+            'dt_nascimento': DateInput(attrs={'type': "date"}),
+        }
