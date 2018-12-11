@@ -31,10 +31,9 @@ def nova_especialidade(request):
                       {'form': form})
 
 
-def remover_especialidade(request, especialidade_id):
-    Especialidade.objects.get(id=especialidade_id).delete()
-    return redirect('mostar_especialidades')
-
+def remover_especialidade(request, id):
+    Especialidade.objects.get(id=id).delete()
+    return redirect('mostrar_especialidades')
 
 
 def mostrar_consultas(request):
@@ -80,6 +79,7 @@ def mostrar_atendentes(request):
     atendentes = Atendente.objects.all()
     return render(request, 'atendente.html',
                   {'atendentes': atendentes})
+
 
 def novo_atendente(request):
     if request.method == "POST":
