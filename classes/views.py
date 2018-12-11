@@ -31,6 +31,12 @@ def nova_especialidade(request):
                       {'form': form})
 
 
+def remover_especialidade(request, especialidade_id):
+    Especialidade.objects.get(id=especialidade_id).delete()
+    return redirect('mostar_especialidades')
+
+
+
 def mostrar_consultas(request):
     pass
 
@@ -82,6 +88,6 @@ def novo_atendente(request):
             form.save()
         return redirect('mostrar_atendentes')
     else:
-        form = PacienteForm()
+        form = AtendenteForm()
         return render(request, 'novo_atendente.html',
                       {'form': form})

@@ -1,5 +1,5 @@
 from django.forms import ModelForm, TextInput, DateInput
-from .models import Especialidade, Medico, Cliente
+from .models import Especialidade, Medico, Cliente, Atendente
 
 
 class EspecialidadeForm(ModelForm):
@@ -48,7 +48,7 @@ class PacienteForm(ModelForm):
 class AtendenteForm(ModelForm):
 
     class Meta:
-        model = Cliente
+        model = Atendente
         fields = '__all__'
 
         widgets = {
