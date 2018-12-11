@@ -16,7 +16,7 @@
 
     {% for field in form.visible_fields %}
     <div class="form-group">
-      <label class="control-label col-sm-2" for="email">{{ field.label_tag }}</label>
+      <label class="control-label col-sm-2">{{ field.label_tag }}</label>
       <div class="col-sm-8">
         {{ field.errors }}
         {{ field }}
