@@ -1,5 +1,5 @@
 from django.forms import ModelForm, TextInput
-from .models import Especialidade, Medico
+from .models import Especialidade, Medico, Cliente
 
 
 class EspecialidadeForm(ModelForm):
@@ -34,4 +34,16 @@ class MedicoForm(ModelForm):
             'nome': {
                 'max_length': ("This writer's name is too long."),
             },
+        }
+
+
+class PacienteForm(ModelForm):
+
+    class Meta:
+        model = Cliente
+        fields = '__all__'
+
+        widgets = {
+            'nome': TextInput(attrs={'class': 'form-control', 'placeholder': "Nome do Paciente"}),
+            'CPF': TextInput(attrs={'class': 'form-control', 'placeholder': "Digite o CPF do paciente"}),
         }

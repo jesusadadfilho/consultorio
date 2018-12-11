@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="row" style="margin-top: 5%">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="panel panel-default panel-table">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col col-xs-6">
+            <h3>Pacientes cadastrados</h3>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <table class="table table-striped table-bordered table-list">
+          <thead>
+            <tr>
+              <th class="text-center"><em class="glyphicon glyphicon-cog"></em></th>
+              <th class="hidden-xs">ID</th>
+              <th>Nome</th>
+              <th>CPF</th>
+              <th>Sexo</th>
+              <th>Nascimento</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for paciente in pacientes %}
+            <tr>
+              <td align="center">
+                <a class="btn btn-default"><em class="glyphicon glyphicon-pencil"></em></a>
+                <a class="btn btn-danger"><em class="glyphicon glyphicon-trash"></em></a>
+              </td>
+              <td class="hidden-xs">{{ paciente.id }}</td>
+              <td>{{ paciente.nome }}</td>
+              <td>{{ paciente.CPF }}</td>
+              <td>{{ paciente.sexo }}</td>
+              <td>{{ paciente.dt_nascimento }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="panel-footer">
+        <div class="row">
+          <div class="col col-xs-6">
+            <h3 class="panel-title"></h3>
+          </div>
+          <div class="col col-xs-6 text-right">
+            <a href="{% url 'novo_paciente' %}">
+              <button type="button" class="btn btn-sm btn-primary btn-create">
+                <em class="glyphicon glyphicon-plus"></em>
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

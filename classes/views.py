@@ -36,7 +36,21 @@ def mostrar_consultas(request):
 
 
 def mostrar_pacientes(request):
-    pass
+    pacientes = Cliente.objects.all()
+    return render(request, 'pacientes.html',
+                  {'pacientes': pacientes})
+
+
+def novo_paciente(request):
+    if request.method == "POST":
+        form = PacienteForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('mostrar_pacientes')
+    else:
+        form = PacienteForm()
+        return render(request, 'novo_paciente.html',
+                      {'form': form})
 
 
 def mostrar_medicos(request):
