@@ -40,7 +40,9 @@ def nova_consulta(request):
     if request.method == "POST":
         form = ConsultaForm(request.POST)
         if form.is_valid():
-            form.save()
+            cosulta = form.save(commit=False)
+            cosulta.dt_consulta = cosulta.agendamento.dt_agendada
+            cosulta.save()
         return redirect('mostrar_consultas')
     else:
         form = ConsultaForm()
@@ -49,7 +51,8 @@ def nova_consulta(request):
 
 
 def remover_consulta(request, id):
-    pass
+    Consulta.objects.get(id=id).delete()
+    return redirect('mostrar_consultas')
 
 
 def mostrar_especialidades(request):

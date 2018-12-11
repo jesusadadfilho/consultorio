@@ -75,7 +75,7 @@ class ConsultaForm(ModelForm):
 
     class Meta:
         model = Consulta
-        fields = '__all__'
+        exclude = ['dt_consulta']
 
         widgets = {
             'dt_agendada': DateInput(attrs={'type': "date"}),
