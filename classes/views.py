@@ -12,6 +12,7 @@ def mostrar_agendamentos(request):
     return render(request, 'agendamentos.html',
                   {'agendamentos': agendamentos})
 
+
 def novo_agendamento(request):
     if request.method == "POST":
         form = AgendamentoForm(request.POST)
@@ -46,10 +47,14 @@ def editar_especialidade(request, id):
     especialidade = get_object_or_404(Especialidade, id=id)
 
     if request.method == "POST":
-        form = EspecialidadeForm(request.POST, instance=Especialidade)
+        form = EspecialidadeForm(request.POST, instance=especialidade)
         if form.is_valid():
             form.save()
-        return redirect('mostrar_especialidades')
+            return redirect('mostrar_especialidades')
+        else:
+            form = EspecialidadeForm(instance=especialidade)
+            return render(request, 'nova_especialidade.html',
+                          {'form': form})
     else:
         form = EspecialidadeForm(instance=especialidade)
         return render(request, 'nova_especialidade.html',
@@ -82,9 +87,11 @@ def novo_paciente(request):
         return render(request, 'novo_paciente.html',
                       {'form': form})
 
+
 def remover_paciente(request, id):
     Cliente.objects.get(id=id).delete()
     return redirect('mostrar_pacientes')
+
 
 def novo_medico(request):
     if request.method == "POST":
@@ -104,7 +111,7 @@ def mostrar_medicos(request):
                   {'medicos': medicos})
 
 
-def excluir_medico(request, id):
+def remover_medico(request, id):
     medico = Medico.objects.get(id=id).delete()
     return redirect('mostrar_medicos')
 
@@ -113,6 +120,7 @@ def mostrar_atendentes(request):
     atendentes = Atendente.objects.all()
     return render(request, 'atendente.html',
                   {'atendentes': atendentes})
+
 
 def novo_atendente(request):
     if request.method == "POST":
@@ -124,6 +132,7 @@ def novo_atendente(request):
         form = AtendenteForm()
         return render(request, 'novo_atendente.html',
                       {'form': form})
+
 
 def remover_atendente(request, id):
     Atendente.objects.get(id=id).delete()
