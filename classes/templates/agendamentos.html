@@ -1,5 +1,67 @@
 {% extends 'base.html' %}
 
 {% block main %}
-<h1>Agendamentos</h1>
+
+<div class="row" style="margin-top: 5%">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="panel panel-default panel-table">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col col-xs-6">
+            <h3>Agendamentos cadastradas</h3>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <table class="table table-striped table-bordered table-list">
+          <thead>
+            <tr>
+              <th class="text-center"><em class="glyphicon glyphicon-cog"></em></th>
+              <th class="hidden-xs">ID</th>
+              <th>dt_agendamento</th>
+              <th>dt_agendada</th>
+              <th>cliente</th>
+              <th>atendente</th>
+              <th>CPF</th>
+              <th>especialidade</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for agendamento in agendamentos %}
+            <tr>
+              <td align="center">
+                <a class="btn btn-default"><em class="glyphicon glyphicon-pencil"></em></a>
+                <a  href="{% url 'remover_atendente' atendente.id %}"
+                        class="btn btn-danger"><em class="glyphicon glyphicon-trash"></em>
+                </a>
+              </td>
+              <td class="hidden-xs">{{ atendente.id }}</td>
+              <td>{{ agentamento.dt_agendamento }}</td>
+              <td>{{ agendamento.dt_agendada }}</td>
+              <td>{{ agendamento.cliente.nome }}</td>
+              <td>{{ agendamento.atendente.nome }}</td>
+              <td>{{ agendamento.especialidade.nome }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="panel-footer">
+        <div class="row">
+          <div class="col col-xs-6">
+            <h3 class="panel-title"></h3>
+          </div>
+          <div class="col col-xs-6 text-right">
+            <a href="{% url 'novo_agendamento' %}">
+              <button type="button" class="btn btn-sm btn-primary btn-create">
+                <em class="glyphicon glyphicon-plus"></em>
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

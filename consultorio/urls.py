@@ -20,4 +20,6 @@ urlpatterns = [
     path('especialidades/remover/<int:id>', views.remover_especialidade, name='remover_especialidade'),
     path('medicos/remover/<int:id>', views.excluir_medico, name='excluir_medico'),
     path('atendentes/remover/<int:id>', views.remover_atendente, name='remover_atendente'),
+    path('pacientes/remover/<int:id>', views.remover_paciente, name='remover_paciente'),
+    path('agendamentos/novo', views.novo_agendamento, name='novo_agendamento'),
 ]

@@ -12,6 +12,17 @@ def mostrar_agendamentos(request):
     return render(request, 'agendamentos.html',
                   {'agendamentos': agendamentos})
 
+def novo_agendamento(request):
+    if request.method == "POST":
+        form = AgendamentoForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('mostrar_agendamentos')
+    else:
+        form = AgendamentoForm()
+        return render(request, 'novo_agendamento.html',
+                      {'form': form})
+
 
 def mostrar_especialidades(request):
     especialidades = Especialidade.objects.all()
@@ -56,6 +67,10 @@ def novo_paciente(request):
         form = PacienteForm()
         return render(request, 'novo_paciente.html',
                       {'form': form})
+
+def remover_paciente(request, id):
+    Cliente.objects.get(id=id).delete()
+    return redirect('mostrar_pacientes')
 
 def novo_medico(request):
     if request.method == "POST":
