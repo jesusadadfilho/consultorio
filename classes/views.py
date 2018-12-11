@@ -75,11 +75,15 @@ def mostrar_medicos(request):
                   {'medicos': medicos})
 
 
+def excluir_medico(request, id):
+    medico = Medico.objects.get(id=id).delete()
+    return redirect('mostrar_medicos')
+
+
 def mostrar_atendentes(request):
     atendentes = Atendente.objects.all()
     return render(request, 'atendente.html',
                   {'atendentes': atendentes})
-
 
 def novo_atendente(request):
     if request.method == "POST":
@@ -92,6 +96,6 @@ def novo_atendente(request):
         return render(request, 'novo_atendente.html',
                       {'form': form})
 
-def excluir_medico(request, id):
-    medico = Medico.objects.get(id=id).delete()
-    return redirect('mostrar_medicos')
+def remover_atendente(request, id):
+    Atendente.objects.get(id=id).delete()
+    return redirect('mostrar_atendentes')

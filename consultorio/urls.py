@@ -19,4 +19,5 @@ urlpatterns = [
     path('pacientes/novo', views.novo_paciente, name='novo_paciente'),
     path('especialidades/remover/<int:id>', views.remover_especialidade, name='remover_especialidade'),
     path('medicos/remover/<int:id>', views.excluir_medico, name='excluir_medico'),
+    path('atendentes/remover/<int:id>', views.remover_atendente, name='remover_atendente'),
 ]

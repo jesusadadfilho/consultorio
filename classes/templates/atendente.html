@@ -28,7 +28,9 @@
             <tr>
               <td align="center">
                 <a class="btn btn-default"><em class="glyphicon glyphicon-pencil"></em></a>
-                <a class="btn btn-danger"><em class="glyphicon glyphicon-trash"></em></a>
+                <a  href="{% url 'remover_atendente' atendente.id %}"
+                        class="btn btn-danger"><em class="glyphicon glyphicon-trash"></em>
+                </a>
               </td>
               <td class="hidden-xs">{{ atendente.id }}</td>
               <td>{{ atendente.nome }}</td>
