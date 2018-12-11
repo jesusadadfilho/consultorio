@@ -19,6 +19,7 @@ class EspecialidadeForm(ModelForm):
             },
         }
 
+
 class MedicoForm(ModelForm):
 
     class Meta:
@@ -56,6 +57,7 @@ class AtendenteForm(ModelForm):
             'CPF': TextInput(attrs={'class': 'form-control', 'placeholder': "Digite o CPF do paciente"}),
             'dt_nascimento': DateInput(attrs={'type': "date"}),
         }
+
 
 class AgendamentoForm(ModelForm):
 

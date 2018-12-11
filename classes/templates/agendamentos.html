@@ -18,11 +18,11 @@
             <tr>
               <th class="text-center"><em class="glyphicon glyphicon-cog"></em></th>
               <th class="hidden-xs">ID</th>
-              <th>dt_agendamento</th>
-              <th>dt_agendada</th>
-              <th>cliente</th>
-              <th>atendente</th>
-              <th>CPF</th>
+              <th>Agendamento</th>
+              <th>Data agendada</th>
+              <th>Cliente</th>
+              <th>Cliente CPF</th>
+              <th>Atendente</th>
               <th>especialidade</th>
             </tr>
           </thead>
@@ -31,16 +31,17 @@
             <tr>
               <td align="center">
                 <a class="btn btn-default"><em class="glyphicon glyphicon-pencil"></em></a>
-                <a  href="{% url 'remover_atendente' atendente.id %}"
+                <a  href="{% url 'remover_agendamento' agendamento.id %}"
                         class="btn btn-danger"><em class="glyphicon glyphicon-trash"></em>
                 </a>
               </td>
-              <td class="hidden-xs">{{ atendente.id }}</td>
-              <td>{{ agentamento.dt_agendamento }}</td>
+              <td class="hidden-xs">{{ agendamento.id }}</td>
+              <td>{{ agendamento.dt_agendamento }}</td>
               <td>{{ agendamento.dt_agendada }}</td>
               <td>{{ agendamento.cliente.nome }}</td>
+              <td>{{ agendamento.cliente.CPF }}</td>
               <td>{{ agendamento.atendente.nome }}</td>
-              <td>{{ agendamento.especialidade.nome }}</td>
+              <td>{{ agendamento.especialidade }}</td>
             </tr>
             {% endfor %}
           </tbody>

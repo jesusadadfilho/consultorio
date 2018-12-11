@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import *
 from .forms import *
 
 
@@ -23,6 +22,11 @@ def novo_agendamento(request):
         form = AgendamentoForm()
         return render(request, 'novo_agendamento.html',
                       {'form': form})
+
+
+def remover_agendamento(request, id):
+    Agendamento.objects.get(id=id).delete()
+    return redirect('mostrar_agendamentos')
 
 
 def mostrar_especialidades(request):
