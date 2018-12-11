@@ -40,4 +40,6 @@ def mostrar_pacientes(request):
 
 
 def mostrar_medicos(request):
-    pass
+    medicos = Medico.objects.all()
+    return render(request, 'medicos.html',
+                  {'medicos': medicos})
