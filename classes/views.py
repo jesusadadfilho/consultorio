@@ -91,3 +91,7 @@ def novo_atendente(request):
         form = AtendenteForm()
         return render(request, 'novo_atendente.html',
                       {'form': form})
+
+def excluir_medico(request, id):
+    medico = Medico.objects.get(id=id).delete()
+    return redirect('mostrar_medicos')
