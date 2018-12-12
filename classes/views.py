@@ -117,6 +117,24 @@ def novo_paciente(request):
                       {'form': form})
 
 
+def editar_paciente(request, id):
+    paciente = get_object_or_404(Cliente, id=id)
+
+    if request.method == "POST":
+        form = PacienteForm(request.POST, instance=paciente)
+        if form.is_valid():
+            form.save()
+            return redirect('mostrar_pacientes')
+        else:
+            form = PacienteForm(instance=paciente)
+            return render(request, 'novo_paciente.html',
+                          {'form': form})
+    else:
+        form = PacienteForm(instance=paciente)
+        return render(request, 'novo_paciente.html',
+                  {'form': form})
+
+
 def remover_paciente(request, id):
     Cliente.objects.get(id=id).delete()
     return redirect('mostrar_pacientes')
@@ -132,6 +150,24 @@ def novo_medico(request):
         form = MedicoForm()
         return render(request, 'novo_medico.html',
                       {'form': form})
+
+def editar_medico(request, id):
+    medico = get_object_or_404(Medico, id=id)
+
+    if request.method == "POST":
+        form = MedicoForm(request.POST, instance=medico)
+        if form.is_valid():
+            form.save()
+            return redirect('mostrar_medicos')
+        else:
+            form = MedicoForm(instance=medico)
+            return render(request, 'novo_medico.html',
+                          {'form': form})
+    else:
+        form = MedicoForm(instance=medico)
+        return render(request, 'novo_medico.html',
+                  {'form': form})
+
 
 
 def mostrar_medicos(request):

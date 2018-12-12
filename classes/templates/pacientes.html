@@ -27,7 +27,9 @@
             {% for paciente in pacientes %}
             <tr>
               <td align="center">
-                <a class="btn btn-default"><em class="glyphicon glyphicon-pencil"></em></a>
+                <a href="{% url 'editar_paciente' paciente.id %}"
+                        class="btn btn-default"><em class="glyphicon glyphicon-pencil"></em>
+                </a>
                 <a href="{% url 'remover_paciente' paciente.id %}"
                         class="btn btn-danger"><em class="glyphicon glyphicon-trash"></em>
                 </a>
